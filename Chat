@@ -1,0 +1,6 @@
+#!/bin/sh
+
+contents=$(9p read acme/$winid/body)
+echo "%%\n" | 9p write acme/$winid/body
+echo $contents | go-gpt -m gpt-4o-mini -max 1000 | 9p write acme/$winid/body
+echo "\n%%\n" | 9p write acme/$winid/body
