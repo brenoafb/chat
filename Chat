@@ -1,6 +1,17 @@
 #!/bin/sh
 
+export OPENAI_TOKEN="..."
+export ANTHROPIC_API_KEY="..."
+
+PROVIDER="anthropic"
+MODEL="claude-3-5-sonnet-20240620"
+
+# PROVIDER="openai"
+# MODEL="gpt-4o"
+
+MAX_TOKENS=1000
+
 contents=$(9p read acme/$winid/body)
 echo "%%\n" | 9p write acme/$winid/body
-echo $contents | go-gpt -m gpt-4o-mini -max 1000 | 9p write acme/$winid/body
+echo $contents | $PROVIDER -m $MODEL -max $MAX_TOKENS | 9p write acme/$winid/body
 echo "\n%%\n" | 9p write acme/$winid/body

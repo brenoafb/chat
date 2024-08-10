@@ -37,7 +37,6 @@ func main() {
 		defer wg.Done()
 
 		if *sysPromptPath == "" {
-			sysPrompt = "You are a helpful assistant"
 			return
 		}
 
@@ -76,10 +75,12 @@ func main() {
 
 	ctx := context.Background()
 
-	inputMessages = append([]openai.ChatCompletionMessage{{
-		Role:    openai.ChatMessageRoleSystem,
-		Content: sysPrompt,
-	}}, inputMessages...)
+	if sysPrompt != "" {
+		inputMessages = append([]openai.ChatCompletionMessage{{
+			Role:    openai.ChatMessageRoleSystem,
+			Content: sysPrompt,
+		}}, inputMessages...)
+	}
 
 	req := openai.ChatCompletionRequest{
 		Model:     *model,
@@ -115,6 +116,12 @@ func parseInput(input string) []openai.ChatCompletionMessage {
 	parts := strings.Split(input, "%%")
 
 	role := openai.ChatMessageRoleUser
+	// if input starts with a line containing only %%,
+	// we assume that there's an explicit system prompt
+	if parts[0] == "%%" {
+		role = openai.ChatMessageRoleSystem
+	}
+
 	messages := []openai.ChatCompletionMessage{}
 
 	for _, part := range parts {

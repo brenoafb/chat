@@ -1,2 +1,4 @@
+github.com/liushuangls/go-anthropic/v2 v2.4.1 h1:NrqITJX+zQ2kBYx6jPU+wqEK2GPDu4tnoJORhcyUHCM=
+github.com/liushuangls/go-anthropic/v2 v2.4.1/go.mod h1:8BKv/fkeTaL5R9R9bGkaknYBueyw2WxY20o7bImbOek=
 github.com/sashabaranov/go-openai v1.24.0 h1:4H4Pg8Bl2RH/YSnU8DYumZbuHnnkfioor/dtNlB20D4=
 github.com/sashabaranov/go-openai v1.24.0/go.mod h1:lj5b/K+zjTSFxVLijLSTDZuP7adOgerWeFyZLUhAKRg=
