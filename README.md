@@ -1,4 +1,4 @@
-This repo contains a tool for interacting with the OpenAI API in plain text. Input is received from stdin and contains `%%`-separated messages, alternating between user and assistant roles.
+This repo contains a tool for interacting with the LLM APIs in plain text. Input is received from stdin and contains `%%`-separated messages, alternating between user and assistant roles.
 
 ```
 <user message>
@@ -39,4 +39,4 @@ You can provide a system prompt by either pointing to a file with the `-s` flag 
 ```
 ```
 
-The `Chat` script is meant to be used with the [Acme](acme.cat-v.org) editor. It will read text in the current window and run a GPT chat session.
+The `Chat` script is meant to be used with the [Acme](acme.cat-v.org) editor. It will read text in the current window and run a chat session.
