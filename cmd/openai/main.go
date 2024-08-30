@@ -64,7 +64,7 @@ func main() {
 		input, err := io.ReadAll(os.Stdin)
 
 		if err != nil {
-			fmt.Printf("error reading input: %s\n", err)
+			fmt.Fprintf(os.Stderr, "error reading input: %s\n", err)
 			os.Exit(1)
 		}
 
@@ -90,7 +90,7 @@ func main() {
 	}
 	stream, err := c.CreateChatCompletionStream(ctx, req)
 	if err != nil {
-		fmt.Printf("ChatCompletionStream error: %v\n", err)
+		fmt.Fprintf(os.Stderr, "ChatCompletionStream error: %v\n", err)
 		return
 	}
 
@@ -104,7 +104,7 @@ func main() {
 		}
 
 		if err != nil {
-			fmt.Printf("\nStream error: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Stream error: %v\n", err)
 			return
 		}
 

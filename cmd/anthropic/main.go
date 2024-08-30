@@ -64,7 +64,7 @@ func main() {
 		input, err := io.ReadAll(os.Stdin)
 
 		if err != nil {
-			fmt.Printf("error reading input: %s\n", err)
+			fmt.Fprintf(os.Stderr, "error reading input: %s\n", err)
 			os.Exit(1)
 		}
 
@@ -96,9 +96,9 @@ func main() {
 	if err != nil {
 		var e *anthropic.APIError
 		if errors.As(err, &e) {
-			fmt.Printf("Messages stream error, type: %s, message: %s\n", e.Type, e.Message)
+			fmt.Fprintf(os.Stderr, "Messages stream error, type: %s, message: %s\n", e.Type, e.Message)
 		} else {
-			fmt.Printf("Messages stream error: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Messages stream error: %v\n", err)
 		}
 		return
 	}
